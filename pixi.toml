@@ -1,0 +1,15 @@
+[workspace]
+authors = ["notPlancha <andre.plancha@hotmail.com>"]
+channels = ["conda-forge"]
+name = "eda-exam"
+platforms = ["win-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = ">=3.13.2,<3.14"
+jupyter = ">=1.1.1,<2"
+numpy = ">=2.2.4,<3"
+pandas = ">=2.2.3,<3"
+scikit-learn = ">=1.6.1,<2"
