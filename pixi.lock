@@ -211,6 +211,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/win-64/zstandard-0.23.0-py313ha7868ed_1.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/zstd-1.5.7-hbeecb71_2.conda
       - pypi: https://files.pythonhosted.org/packages/b9/54/dd730b32ea14ea797530a4479b2ed46a6fb250f682a9cfb997e968bf0261/networkx-3.4.2-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/26/03/113d55caacf415f9fb29ed3af940592a54b725b62d1f4c3d5297ddf14c10/permetrics-2.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/d2/d8/ae9760b6758370a7b1654481bcb2b11dcc4617f5e836545d78b2d1872877/pyEDAkit-0.1.4-py3-none-any.whl
 packages:
 - conda: https://conda.anaconda.org/conda-forge/win-64/_openmp_mutex-4.5-2_gnu.conda
@@ -1967,6 +1968,18 @@ packages:
   - pkg:pypi/patsy?source=hash-mapping
   size: 186594
   timestamp: 1733792482894
+- pypi: https://files.pythonhosted.org/packages/26/03/113d55caacf415f9fb29ed3af940592a54b725b62d1f4c3d5297ddf14c10/permetrics-2.0.0-py3-none-any.whl
+  name: permetrics
+  version: 2.0.0
+  sha256: 2b7252fff81e2e2dec67ca7db3826f4d6ec65072cfa76b8e41bc534ab53f331e
+  requires_dist:
+  - numpy>=1.15.1
+  - scipy>=1.7.1
+  - pytest>=7.0 ; extra == 'dev'
+  - pytest-cov==4.0.0 ; extra == 'dev'
+  - flake8>=4.0.1 ; extra == 'dev'
+  - scikit-learn>=1.0.1 ; extra == 'dev'
+  requires_python: '>=3.7'
 - conda: https://conda.anaconda.org/conda-forge/noarch/pickleshare-0.7.5-pyhd8ed1ab_1004.conda
   sha256: e2ac3d66c367dada209fc6da43e645672364b9fd5f9d28b9f016e24b81af475b
   md5: 11a9d1d09a3615fc07c3faf79bc0b943

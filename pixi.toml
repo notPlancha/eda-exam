@@ -25,3 +25,4 @@ seaborn = ">=0.13.2,<0.14"
 
 [pypi-dependencies]
 pyedakit = ">=0.1.4, <0.2"
+permetrics = ">=2.0.0, <3"
