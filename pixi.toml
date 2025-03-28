@@ -19,6 +19,7 @@ pyprojroot = ">=0.3.0,<0.4"
 tqdm = ">=4.67.1,<5"
 sympy = ">=1.13.3,<2"
 plotly = ">=6.0.1,<7"
+joblib = ">=1.4.2,<2"
 
 [pypi-dependencies]
 pyedakit = ">=0.1.4, <0.2"
