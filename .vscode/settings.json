@@ -1,0 +1,6 @@
+{
+  "files.autoSave": "off",
+  "[typst]": {
+    "files.autoSave": "afterDelay"
+  }
+}

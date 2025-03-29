@@ -241,7 +241,7 @@ As I interpreted it, this questions asks us to:
   [Total], [202], [1]
 )
 
-From this, we can see that the algorithm was not able to separate the normal cells from the cancer cells, since the smaller cluster has only one observation Cancer observation. Because of the nature of this algorithm, we can conclude that this observation might be an outlier, showing the method's robustness in outlier detection. // TODO make percentage of correct
+From this, we can see that the algorithm was not able to separate the normal cells from the cancer cells, since the smaller cluster has only one Cancer observation. Because of the nature of this algorithm, we can conclude that this observation might be an outlier, showing the method's robustness in outlier detection. Assuming cluster 1 is the cancer cluster, the percentage of correct classified observations is #{calc.round((185)*100/203, digits: 2)}%.
 
 #question[
   == b)
@@ -322,4 +322,103 @@ For this question, 1000 points of every shape were generated, with the following
 
 #image("images/balls_far.png")
 
-Model based clustering is a clustering method based on a finite mixutre probability model, using the EM algorithm // TODO might change
+Model based clustering is a clustering method based on a finite mixutre probability model, using the EM algorithm // TODO might change, check page 259
+
+#question[
+  == b)
+  Randomly generate those sub data sets so that they are overlap partly, then apply model based clustering to find clusters even compare the associated clusters with original labels.
+]
+
+// TODO
+
+#question[
+  = 4. 
+  Find the datasets about inflation, unemployment in member countries of European union during the last ten years (2015 - 2024). Your dataset should contains at least 20 countries. Denote the inflation dataset by EUin and the unemployment dataset by EUun and EU = [EUin,EUun].
+  
+  Hint You may check the database at the websites: https://european-union.europa.eu or https://ec.europa.eu/eurostat/data/database or
+  
+  == a)
+  Study the unemployment pattern by looking at clusters of EUun using one proper hierarchical methods and evaluate the result by Silhouette plot.
+]
+#let EUun = [_EU#sub[un]_]
+#let EUin = [_EU#sub[in]_]
+#let EU = [_EU_]
+#EUun collected is a 12x26 (12 years, 26 EU countries) table with the following structure:
+
+#table(
+  columns: 5,
+  align: (x, y) => {
+    if (x == 0) {right}
+    else if (y == 0) {left}
+    else {right}
+  },
+  [], table.vline(), [Belgium], [Bulgaria], [...], [Sweden],
+  table.hline(),
+  [2013], [8.6], [13.9], [...], [8.1],
+  [2014], [8.7], [12.4], [...], [8.0],
+  [2015], [8.7], [10.1], [...], [7.5],
+  [...], [...], [...], [...], [...],
+  [2024], [5.7], [4.2], [...], [8.4]
+)
+
+The full dataset is available on #link("github.com/notPlancha/eda-exam/tree/main/data")
+
+Hierarchical clustering is a method of clustering analysis that builds a hierarchy of clusters, represented as a tree-like structure called a dendrogram. Using SciPy's `linkage` with Ward's method, the following dendrogram was obtained:
+
+#image("images/dendogram.png")
+
+We can see that the method found a clear divide between years <= 2017 and > 2017 in the data, based on the distance between this divide. By defining these 2 as clusters, the following silhouette was produced:
+
+#image("images/silhouette.png")
+
+Looking at the silhouette plot, we can see that the clusters are well defined, with a silhouette score close to 0.6. There seems to be a single year that perhaps could be better in the other cluster, but overall the clusters are well defined.
+
+#question[
+  == b)
+  Study the joint pattern of unemployment and inflation by looking at clusters of EU using k-means method and evaluate the result by using Dunn index.
+]
+
+#EU collected is a 12x52 (12 years, 26*2 EU countries) table. #EUin is also available on the same link as before.
+
+To determine the number of clusters that should be used with the k-means algorithm, a scree plot was produced:
+
+#image("images/scree.png")
+By the plot and the elbow method, it seems that 4 clusters should be used. Using scikit-learn's `KMeans` with 4 clusters, the following Dunn index was obtained:
+
+$
+  D I_m approx #calc.round(0.6848341878885634, digits: 2)
+$
+
+The Dunn index is a measure of cluster separation and cluster compactness representing the ratio between the minimum inter-cluster distance and maximum intra-cluster distance: the larger the index, the better the clustering. Altough the metric is better as a comparasion between cluster results, we can say that since the value is smaller than 1, the clustering is not optimal, but still good.
+
+#question[
+  = 5. 
+  Consider the dataset
+  $
+    X = mat(
+      3, 1, 0.1;
+      1, 4, 0.02;
+      1, 1, 0;
+      4, 1, 0.1;
+      1.5, 3, 0;
+      0.12, 2, 1.9;
+      0, 6, 3.5;
+      0.03, 0.5, 1;
+      0.1, 4, 3;
+    )
+  $
+  
+  == a)
+  Visualize the dataset $X$ via scatter3.
+]
+
+Using plotly's `scatter_3d`, the following was obtained:
+
+#image("images/points.png")
+
+#question[
+  == b)
+  It's obvious that $X$ contains two clusters: one is on xy-plane and another one is on the yz-plane. Please check if hierarchical Ward's method, spectral method are able to recover these two clusters.
+]
+
+Ward's method is a method of hierarchical clustering that minimizes the within-cluster variance. Using SciPy's `linkage` with Ward's method, the following dendrogram was obtained:

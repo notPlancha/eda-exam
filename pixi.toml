@@ -9,9 +9,8 @@ version = "0.1.0"
 server = "jupyter server"
 
 [tasks.report]
-cmd = "typst w main.typ"
+cmd = "typst watch main.typ --font-path fonts/ report.pdf"
 cwd = "report"
-env = { TYPST_FONT_PATHS = "fonts" }
 
 [dependencies]
 python = ">=3.13.2,<3.14"
