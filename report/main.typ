@@ -300,5 +300,26 @@ As in a) and b), the algorithm was not able to separate the observations based o
   Model based clustering in chapter 6 (section 6.5) is based on geometrical properties of clusters, e.g. balls and ellipsoids in 3-dim. In this question, you are asked to randomly generate data sets to check the capability of MBC: two balls of different sizes, two ellipsoids of different size with symmetry axis parallel with coordinates axis, three ellipsoids also different sizes with arbitrary symmetry axis.
   
   == a)
-  Randomly generate those sub data sets so that they are disjoint (far away from each other), then apply model based clustering to find clusters even compare the estimated clusters with original labels.
+  Randomly generate those sub data sets so that they are disjoint (far away from each other), then apply model based clustering to fin clusters even compare the estimated clusters with original labels.
 ]
+
+For this question, 1000 points of every shape were generated, with the following properties:
+
+
+#table(
+  columns: 10,
+  rows: 8,
+  [], table.vline(), $x_c$, $y_c$, $z_c$, $x_r$, $y_r$, $z_r$, $alpha$, $beta$, $gamma$,
+  table.hline(),
+  [Ball 1], $10$, $10$, $10$, $2$, $2$, $2$, $0 degree$, $0 degree$, $0 degree$,
+  [Ball 2], $-10$, $-10$, $-10$, $1$, $1$, $1$, $0 degree$, $0 degree$, $0 degree$,
+  [Ellipsoid 1], $0$, $0$, $0$, $3$, $2$, $1$, $0 degree$, $0 degree$, $0 degree$,
+  [Ellipsoid 2], $10$, $0$, $0$, $1$, $1.5$, $1$, $0 degree$, $0 degree$, $0 degree$,
+  [Ellipsoid 3], $0$, $10$, $0$, $4$, $5$, $1$, $30 degree$, $45 degree$, $30 degree$,
+  [Ellipsoid 4], $0$, $0$, $10$, $2$, $2$, $1$, $60 degree$, $0 degree$, $0 degree$,
+  [Ellipsoid 5], $0$, $10$, $10$, $3$, $1$, $1$, $60 degree$, $20 degree$, $45 degree$
+)
+
+#image("images/balls_far.png")
+
+Model based clustering is a clustering method based on a finite mixutre probability model, using the EM algorithm // TODO might change
