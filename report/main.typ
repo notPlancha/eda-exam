@@ -548,14 +548,32 @@ From these, a sample of 2000 points was taken.
   Estimate the intrinsic dimensionality of the above Sierpinski triangle by the nearest neighbor method `idpettis`.
 ]
 
-The intrinsic dimensionality of a dataset a number that represents the estimate of independent components needed to represent the data. `idpettis` is a method that uses the Pettis, Bailey, Jain and Dubes algorithm #footnote[Pettis, K. W., T. A. Bailey, A. K. Jain, and R. C. Dubes. 1979. “An intrinsic dimensionality estimator from near-neighbor information,” IEEE Transactions on Pattern Analysis and Machine Intelligence, 1:25-37.] , based on the nearest neighbor distances. Using this method, the intrinsic dimensionality of the sampled points is $approx #calc.round(1.715022265671132, digits:2 )$ and $#calc.round(1.7287723613777117, digits:2)$, respectively. This means that for both samples, the intrinsic dimensionality is close to 2 dimensions, which is expected since the Sierpinski triangle is a 2D object.
+The intrinsic dimensionality of a dataset a number that represents the estimate of independent components needed to represent the data. `idpettis` is a method that uses the Pettis, Bailey, Jain and Dubes algorithm #footnote[Pettis, K. W., T. A. Bailey, A. K. Jain, and R. C. Dubes. 1979. “An intrinsic dimensionality estimator from near-neighbor information,” IEEE Transactions on Pattern Analysis and Machine Intelligence, 1:25-37.] , based on the nearest neighbor distances. Using this method, the intrinsic dimensionality of the sampled points is $approx #calc.round(1.715022265671132, digits:2)$ and $#calc.round(1.7287723613777117, digits:2)$, respectively. This means that for both samples, the intrinsic dimensionality is close to 2 dimensions, which is expected since the Sierpinski triangle is a 2D object.
 
 #question[
   == c)
   The number of neighbors $K$ in the above EDA toolbox `idpettis` is by default 5, study the sensitivity of the above estimations with respect to $K$. Plot these estimates as function of $K$, where $5 <= K <= 15$ and even comment on the behaviors of these curves.
 ]
-// TODO k description
 
 #image("images/lines.png")
 
 From the plot, we can see that the intrinsic dimension decreases as $K$ increasing, arguably starting to plateau around $K = 12$. The intrinsic dimension of the sample from 100,000 points is always higher than the one from 10,000 points. Finally, the Intrinsic dimension of the samples only ranges between 1.6 and 1.8, suggesting that the algorithm, regardless of $K$, is able to estimate the intrinsic dimension of the Sierpinski triangle.
+
+#question[
+  = 9. 
+  Consider the bended tube and also the cutted tube (see the figure below). These two surfaces are topologically very different.
+  
+  #align(center, image("images/tubes_enunciado.png"))
+
+  == a)
+  Generate 20000 and 10000 sample points from the bended respectively the cutted tubes, and denote them by $X$, and $Z$.
+]
+
+The generated points for the bended and cutted tubes are shown below:
+
+#image("images/generated_tubes.png")
+
+#question[
+  == b)
+  Apply the nonlinear dimension reduction method LLE to these datasets $X,Z$. How does this method work for the bended tube respectively the cutted tube?
+]
