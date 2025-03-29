@@ -443,21 +443,37 @@ Unexpectedly, the spectral method was also not able to recover the clusters, wit
 
 Non-negative matrix factorization (NMF) is a group of algorithms in multivariate analysis and linear algebra where a matrix $X$ is factorized into two matrices $W$ and $H$, with the property that all three matrices have no negative elements. The multiplicative update algorithm is a method to solve this factorization. Using scikit-learn's `non_negative_factorization` and the _mu_ solver, the following matrices were obtained after 50 iterations:
 
+/*
+(array([[0.03, 0.92, 0.08],
+        [0.02, 0.21, 1.06],
+        [0.  , 0.29, 0.22],
+        [0.01, 1.24, 0.03],
+        [0.01, 0.4 , 0.75],
+        [0.73, 0.03, 0.  ],
+        [1.48, 0.  , 0.48],
+        [0.27, 0.  , 0.  ],
+        [1.29, 0.03, 0.05]]),
+ array([[0., 3., 2.],
+        [3., 1., 0.],
+        [0., 4., 0.]]),
+*/
+
 $
   W approx mat(
-    0.00097395, 1.02195557;
-    0.735234, 0.44925111;
-    0.1258636, 0.36381882;
-    0.00000001, 1.32506427;
-    0.49222004, 0.58897918;
-    0.63210686, 0.00514756;
-    1.64785043, 0.01050376;
-    0.21789762, 0.00000001;
-    1.17413387, 0.00731071
+    0.03, 0.92, 0.08;
+    0.02, 0.21, 1.06;
+    0, 0.29, 0.22;
+    0.01, 1.24, 0.03;
+    0.01, 0.4, 0.75;
+    0.73, 0.03, 0;
+    1.48, 0, 0.48;
+    0.27, 0, 0;
+    1.29, 0.03, 0.05
   ) \
   H approx mat(
-    0.00000121, 3.69693346, 2.00826198;
-    2.89073927, 1.09257644, 0
+    0, 3, 2;
+    3, 1, 0;
+    0, 4, 0
   )
 $
 
@@ -468,14 +484,15 @@ $
   i) Plot the error term $f$ as an function of $K$.
 ]
 
-// TODO erorr is always above 6 fsr
+#image("images/tol.png")
 
 #question[
   == ii)
   For what integers $K$ is the error $f$ less than the tolerance $epsilon = 10^(-4)$?
 ]
 
-// TODO
+In this case, $f(K)$ is smaller than $10^(-4)$ for all $K >= 834$, altough the error seems to converge way before that. Regardless, $f(K)$ is always decreasing.
+
 
 #question[
   = 7. 
