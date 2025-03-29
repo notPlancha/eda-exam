@@ -421,4 +421,22 @@ Using plotly's `scatter_3d`, the following was obtained:
   It's obvious that $X$ contains two clusters: one is on xy-plane and another one is on the yz-plane. Please check if hierarchical Ward's method, spectral method are able to recover these two clusters.
 ]
 
-Ward's method is a method of hierarchical clustering that minimizes the within-cluster variance. Using SciPy's `linkage` with Ward's method, the following dendrogram was obtained:
+Ward's method is a method of hierarchical clustering that minimizes the within-cluster variance. Using SciPy's `linkage` with Ward's method, and reuqest 2 clusters, the following was obtained:
+
+#image("images/points_cluster_1.png")
+
+We can see from the plot that the method was not able to recover these 2 clusters, with #calc.round(6*100/8, digits: 2)% of correct classified observations (assuming the xy-plane is cluster 2). This is expected, since, visually, the variance in the yz-plane seems to be higher than the variance in the xy-plane, and some points between the 2 are very close by.
+
+Spectral clustering is a method that uses the eigenvalues of a similarity matrix to reduce the dimensionality of the data before clustering in a lower dimensional space. Using scikit-learn's `SpectralClustering` with 2 clusters, the following was obtained:
+
+#image("images/points_cluster_2.png")
+
+Unexpectedly, the spectral method was also not able to recover the clusters, with the same precision as Ward's method (assuming the yz-plane is cluster 0). 
+
+#question[
+  = 6. 
+  Consider again the dataset $X$ given in the previous question.
+  
+  == a)
+  Determine the non-negative factorization matrices $W,H$ of $X$, i.e., $X = WH$, by Multiplicative update algorithm(MULT).
+]
