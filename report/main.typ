@@ -438,5 +438,57 @@ Unexpectedly, the spectral method was also not able to recover the clusters, wit
   Consider again the dataset $X$ given in the previous question.
   
   == a)
-  Determine the non-negative factorization matrices $W,H$ of $X$, i.e., $X = WH$, by Multiplicative update algorithm(MULT).
+  Determine the non-negative factorization matrices $W,H$ of $X$, i.e., $X = W H$, by Multiplicative update algorithm (MULT).
 ]
+
+Non-negative matrix factorization (NMF) is a group of algorithms in multivariate analysis and linear algebra where a matrix $X$ is factorized into two matrices $W$ and $H$, with the property that all three matrices have no negative elements. The multiplicative update algorithm is a method to solve this factorization. Using scikit-learn's `non_negative_factorization` and the _mu_ solver, the following matrices were obtained after 50 iterations:
+
+$
+  W approx mat(
+    0.00097395, 1.02195557;
+    0.735234, 0.44925111;
+    0.1258636, 0.36381882;
+    0.00000001, 1.32506427;
+    0.49222004, 0.58897918;
+    0.63210686, 0.00514756;
+    1.64785043, 0.01050376;
+    0.21789762, 0.00000001;
+    1.17413387, 0.00731071
+  ) \
+  H approx mat(
+    0.00000121, 3.69693346, 2.00826198;
+    2.89073927, 1.09257644, 0
+  )
+$
+
+#question[
+  == b)
+  In this question, we study the convergence of MULT. Let the maximum number of iterations be $K$ and the error function $f$ be $||X - W H||^2$, then $f$ is a function of $K$. Modify the Matlab EDA toolbox routine `nnmf` or any your Python library such that MULT terminates whenever the number of iterations has reach the maximum number of iterations $K$.
+  
+  i) Plot the error term $f$ as an function of $K$.
+]
+
+// TODO erorr is always above 6 fsr
+
+#question[
+  == ii)
+  For what integers $K$ is the error $f$ less than the tolerance $epsilon = 10^(-4)$?
+]
+
+// TODO
+
+#question[
+  = 7. 
+  In the study of dimension reduction by Principle Component Analysis (PCA), one of PCA is based on covariance matrix, and another one is based on correlation matrix. The covariance matrix based PCA has a property: all the PC:scores are uncorrelated, i.e., the correlation coefficient between any pair of PC:scores is zero. Please give a short proof of this property.
+]
+
+// TODO
+
+#question[
+  = 8. 
+  Consider the Sierpinski triangle, which is a fractal set and is of Hausdorff dimension $log_3 2$, roughly 1.585.
+  
+  == a)
+  Please make samplings of points from the above Sierpinski triangle of sizes: a) 10000 points, b) 100000 points.
+]
+
